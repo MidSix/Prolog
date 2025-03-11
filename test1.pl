@@ -23,11 +23,22 @@ we didn't upload our database to prolog(even if we upload our data-base, if the 
 with the symbol '?-' we are doing queries, asking, not defining facts, rules or whatever, so, we must be ensure that we have uploaded our data-base
 before doing a query.
 
-our program must be written in the data-base.
+A set of facts, rules make our data-base. Our program must be written in the data-base.
 */
 
-%A prolog data-base
+%A prolog data-base:
+%Juan Carlos is the father of Felipe, Cristina and Elena.
+father(juancarlos,felipe).
+father(juancarlos,cristina).
+father(juancarlos,elena).
+
+%Their mother is Sofia:
+mother(sofia,felipe).
+mother(sofia,cristina).
+mother(sofia,elena).
+
+%Felipe and Letizia have two children:
 father(felipe,leonor).
-father(felipe,juan_carlos).
-father(felipe,antonio).
-father(felipe,julieta).
+father(felipe,sofia2).
+mother(letizia,leonor).
+mother(letizia,sofia2).
