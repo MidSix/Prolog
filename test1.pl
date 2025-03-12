@@ -1,3 +1,4 @@
+%['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test1.pl'].
 /* 
 Comentarios en Prolog : hay de dos tipos, comentarios de linea y de bloque. Los primeros empiezan con '%'
 los segundos empiezan y terminan como este comentario 
@@ -26,6 +27,23 @@ before doing a query.
 A set of facts, rules make our data-base. Our program must be written in the data-base.
 */
 
+/*
+Prolog interpreter thinks that all relation names must be contiguous, all predicates with the name x should be contiguous
+so if you scatter predicates randomly throughtout the code prolog raise a Warning telling you
+if it's okay that the predicates with the same name aren't contiguous you just apply that operator
+*/
+:- discontiguous father/2.
+:- discontiguous mother/2.
+
+/*
+How to clean the screen like "clear":
+first of all, we should define a rule because the command to clean the screen is hard to write everytime we want to clean the screen
+the command is> write('\e[2J').
+*/
+
+%It works only in swipl, not in this vscode terminal
+clear :- write('\33\[2J')
+
 %A prolog data-base:
 %Juan Carlos is the father of Felipe, Cristina and Elena.
 father(juancarlos,felipe).
@@ -42,3 +60,9 @@ father(felipe,leonor).
 father(felipe,sofia2).
 mother(letizia,leonor).
 mother(letizia,sofia2).
+
+%grandmother(X,Z) :- mother(X,Y), parent(Y,Z).
+%parent(X,Y) :- father(X,Y) ; mother(X,Y).
+% ?- parent(X, felipe).
+% X = juancarlos
+% X = sofia.

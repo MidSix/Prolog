@@ -36,7 +36,8 @@ upload the data-base to prolog trough the terminal:
 2- We must change \ to /, because prolog is powered by linux and in linux the directions uses /.
 3- the direction must be given in string.
 4- then put it inside [] with a final period "."
-['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl'].
+5- right click to paste the direction to the swipl.
+
 or you can also use consult(['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl'].)
 the way of doing it with [] is just an abbreviation
 */
