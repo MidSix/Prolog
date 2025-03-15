@@ -1,4 +1,11 @@
 %['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test1.pl'].
+
+/*
+Prolog errors:
+ERROR: test1.pl:67:17: Syntax error: Operator expected
+67:17:.... This means that the error was found on line 67 which has 17 characters.
+*/
+
 /* 
 Comentarios en Prolog : hay de dos tipos, comentarios de linea y de bloque. Los primeros empiezan con '%'
 los segundos empiezan y terminan como este comentario 
@@ -42,7 +49,7 @@ the command is> write('\e[2J').
 */
 
 %It works only in swipl, not in this vscode terminal
-clear :- write('\33\[2J')
+clear :- write('\33\[2J').
 
 %A prolog data-base:
 %Juan Carlos is the father of Felipe, Cristina and Elena.
@@ -61,8 +68,29 @@ father(felipe,sofia2).
 mother(letizia,leonor).
 mother(letizia,sofia2).
 
+female(X) :- mother(X,_).
+%We know that if X is a mother of someone, then X is female, but, this don't adress our entire problem, because, all the non-mother females are not counted
+%as females, so, we could add this rule to simplify calculations and define as females the remaining ones that aren't mothers.
+female(cristina).
+female(elena).
+female(leonor).
+female(sofia2).
+
+%Exercise:
+/*
+who are Felipe’s parents? Redefine grandmother
+with a single rule using the parent relation.
+*/
+
 %grandmother(X,Z) :- mother(X,Y), parent(Y,Z).
 %parent(X,Y) :- father(X,Y) ; mother(X,Y).
 % ?- parent(X, felipe).
 % X = juancarlos
 % X = sofia.
+parents(X,Y) :- father(X, Y) ; mother(X, Y).
+%Exercise:
+/*
+Exercise: define the sister relation.
+*/
+%X is sister of Y.
+sister(X,Y) :- female(X), parent(Z, X), parent(Z, Y).
