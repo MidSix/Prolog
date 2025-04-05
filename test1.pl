@@ -1,51 +1,16 @@
-%['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test1.pl'].
-
-/*
-Prolog errors:
-ERROR: test1.pl:67:17: Syntax error: Operator expected
-67:17:.... This means that the error was found on line 67 which has 17 characters.
-*/
-
-/* 
-Comentarios en Prolog : hay de dos tipos, comentarios de linea y de bloque. Los primeros empiezan con '%'
-los segundos empiezan y terminan como este comentario 
-*/
-
-/*
-Clauses:
-Clauses are like a broad term for the basics units of Prolog, everything is built from clauses
-then, what are the basic units? -> facts(also known as 'predicates'), rules and queries(?- ), a fact is a clause, a rule is a clause and a query is a clause. 
-*/
-
-/*
-Prolog data-base(also known as base de conocimiento):
-in practical terms, a prolog data-base is what we are writing here in this module, this is where queries are redirect to get an answer to
-our questions, this is why, if we don't import a data-base to prolog we get an error like the next:
-
-?- father(felipe, leonor).
-ERROR: Unknown procedure: father/2 (DWIM could not correct goal)
-
-father/2 means the fact with the relation name father with two arguments. Prolog could'nt find it, that's because 
-we didn't upload our database to prolog(even if we upload our data-base, if the data-base don't have that fact, we'll get the same error).
-
-with the symbol '?-' we are doing queries, asking, not defining facts, rules or whatever, so, we must be ensure that we have uploaded our data-base
-before doing a query.
-
-A set of facts, rules make our data-base. Our program must be written in the data-base.
-*/
-
 /*
 Prolog interpreter thinks that all relation names must be contiguous, all predicates with the name x should be contiguous
-so if you scatter predicates randomly throughtout the code prolog raise a Warning telling you
+so if you scatter predicates randomly throughtout the code prolog raise a Warning asking you
 if it's okay that the predicates with the same name aren't contiguous you just apply that operator
 */
 :- discontiguous father/2.
 :- discontiguous mother/2.
 
 /*
+(Only works in swipl directly, not executed trouhght Vscode)
 How to clean the screen like "clear":
 first of all, we should define a rule because the command to clean the screen is hard to write everytime we want to clean the screen
-the command is> write('\e[2J').
+the command is: write('\e[2J').
 */
 
 %It works only in swipl, not in this vscode terminal
@@ -121,3 +86,21 @@ birthday(X,d(D,M)) :- born(X,f(D,M,_)).
 
 %Exercise of digital circuit:
 or(and(a,b), and(or(b,c), and(c,b))).
+%Exercise Build a predicate eval/5.... Page 90
+/*
+Where A,B,C are the start
+values of a,b,c
+Circuit is the logical operations
+and X is the output
+*/
+
+eval(A,_,_, a, A)
+eval(_,B,_, b, B)
+eval(_,_,C, c, C)
+
+:- op(800,xfx,<==>).
+:- op(700,xfy,v).
+:- op(600,xfy,&).
+:- op(500,fy,not).
+
+eval(A,B,C, Circuit, X).
