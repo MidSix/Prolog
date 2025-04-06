@@ -16,7 +16,7 @@ sum([H|T],X):-
 
 max([H|T], X) :-
     max(T, H, X).
-max([], MAX, MAX).¡
+max([], MAX, MAX).
 max([H|T], MAX_L, X) :-
     H_F is_frac H,
     MAX_LF is_frac MAX_L,
