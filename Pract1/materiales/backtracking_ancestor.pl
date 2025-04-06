@@ -1,3 +1,5 @@
+% --------------------------
+
 father(juancarlos, felipe).
 father(juancarlos, cristina).
 father(juancarlos, elena).
@@ -55,3 +57,5 @@ ancestor(A, P) :-
     parent(A, X), 
     get_code(_),
     ancestor(X, P).
+    
+% --------------------------

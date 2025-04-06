@@ -1,3 +1,5 @@
+%consult("C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test1.pl").
+
 /*
 Prolog interpreter thinks that all relation names must be contiguous, all predicates with the name x should be contiguous
 so if you scatter predicates randomly throughtout the code prolog raise a Warning asking you
@@ -30,8 +32,10 @@ mother(sofia,elena).
 %Felipe and Letizia have two children:
 father(felipe,leonor).
 father(felipe,sofia2).
+father(felipe, maria).
 mother(letizia,leonor).
 mother(letizia,sofia2).
+mother(letizia, maria).
 
 %Leonor and Carlos have a child
 father(carlos, sebastian).
@@ -43,6 +47,7 @@ female(X) :- mother(X,_).
 female(cristina).
 female(elena).
 female(sofia2).
+female(maria).
 
 %Exercise:
 /*
@@ -56,12 +61,27 @@ with a single rule using the parent relation.
 % X = juancarlos
 % X = sofia.
 parents(X,Y) :- father(X, Y) ; mother(X, Y).
+
 %Exercise:
 /*
 Exercise: define the sister relation.
 */
 %X is sister of Y.
-sister(X,Y) :- female(X), X \= Y , parent(Z, X), parent(Z, Y).
+
+%sister(X,Y) :- female(X), X \= Y, parents(Z, X), parents(Z, Y). No funciona porque intenta comprobar si X e Y son distintos cuando Y aun no ha sido ligado a ningun valor.
+
+sister(X,Y) :- female(X), parents(Z, X), parents(Z, Y), X \= Y.
+first_sister(X,Y) :- female(X), parents(Z, X), parents(Z, Y), X \= Y, !.
+/*
+    Here we are using the cut predicate: "!", this predicate allow us to control the flow chart of the program
+    How? Well, what we are saying is that when prolog finally unify the head of the rule, that means, when prolog can unify all conditions in the body rule
+    stop the backtracking, that means, stop looking for other possible solutions 
+
+    first_sister(X,Y) :- female(X), !, parents(Z, X), parents(Z, Y), X \= Y.
+    If we write that, what we are saying to prolog is, block the backtracking before the cut sign, that means, work ONLY, NO MATTER WHAT, with the first X that matches being a female
+    if you're able to unify the conditions of the body rule to get an answer, congratulations, if not, return false, because prolog won't use another X, because it can't backtrack before
+    the cut predicate and can't find another females to try.
+*/
 % "\="  is the inequality operator. X can't be sister of herself
 
 %Prolog backtrack
@@ -94,9 +114,9 @@ Circuit is the logical operations
 and X is the output
 */
 
-eval(A,_,_, a, A)
-eval(_,B,_, b, B)
-eval(_,_,C, c, C)
+eval(A,_,_, a, A).
+eval(_,B,_, b, B).
+eval(_,_,C, c, C).
 
 :- op(800,xfx,<==>).
 :- op(700,xfy,v).

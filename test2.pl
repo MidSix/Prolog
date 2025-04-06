@@ -1,5 +1,5 @@
 
-%consult(['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl']).
+%consult('C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl').
 
 %Prolog operators:
 /*
@@ -114,6 +114,9 @@ I will add the operators that I already used in some point or the ones that I'm 
     The head is the first element of our list.
     The tail is the rest of the elements of our list.
 
+    []  predefine constant   : null
+    [|]/2 predefine operator : nombre_de_cualquier_relacion(Head, Tail)
+    
     % [] An Empty list
     %lista([]).
 
@@ -138,21 +141,21 @@ I will add the operators that I already used in some point or the ones that I'm 
 
 %Exit prolog
 /*
-(Without closing the terminal obviusly because that's the easiest and most straightforward method to do so)
-For exit prolog executed in the terminal we must write the predicate halt/0: "halt."
-halt means literally stop, it's just a synonym of it. So, it's easy to remember I guess
+    (Without closing the terminal obviusly because that's the easiest and most straightforward method to do so)
+    For exit prolog executed in the terminal we must write the predicate halt/0: "halt."
+    halt means literally stop, it's just a synonym of it. So, it's easy to remember I guess
 */
 
 /*
-upload the data-base to prolog trough the terminal:
-1- We must have the direction to the data-base, in this case: C:\Users\Sebastian\OneDrive - Universidade da Coruña\Documentos\Universidad\1er curso\2do cuatrimestre\Lógica\Prolog\test2.pl
-2- We must change \ to /, because prolog is powered by linux and in linux the directions uses / not "\" as in windows.
-3- the direction must be given in string(This is because of the spaces and non-unit character).
-4- then put it inside [] with a final period "."
-5- right click to paste the direction to the swipl.
+    upload the data-base to prolog trough the terminal:
+    1- We must have the direction to the data-base, in this case: C:\Users\Sebastian\OneDrive - Universidade da Coruña\Documentos\Universidad\1er curso\2do cuatrimestre\Lógica\Prolog\test2.pl
+    2- We must change \ to /, because prolog is powered by linux and in linux the directions uses / not "\" as in windows.
+    3- the direction must be given in string(This is because of the spaces and non-unit character).
+    4- then put it inside [] with a final period "."
+    5- right click to paste the direction to the swipl.
 
-or you can also use consult(['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl'].)
-the way of doing it with [] is just an abbreviation
+    or you can also use consult(['C:/Users/Sebastian/OneDrive - Universidade da Coruña/Documentos/Universidad/1er curso/2do cuatrimestre/Lógica/Prolog/test2.pl'].)
+    the way of doing it with [] is just an abbreviation
 */
 
 %data-base:
