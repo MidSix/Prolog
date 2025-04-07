@@ -3,6 +3,7 @@
 %Xoel Sánchez Dacoba; xoel.sanchez.dacoba@udc.es
 
 :- op(700,xfx,'is_frac').
+
 gcd(A,0,A).
 gcd(A,B,GCD):-
     B \= 0,
@@ -43,8 +44,8 @@ avg(L, X):-
     X is_frac SUM div LEN.
     
 X is_frac Y:- 
-    integer(Y),
-    !,  %! cut predicate
+    integer(Y),  %! cut predicate
+    !,
     X=Y/1.
 
 X is_frac -Y:- 
