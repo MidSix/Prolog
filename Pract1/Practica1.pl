@@ -42,13 +42,13 @@ avg(L, X):-
     sum(L, SUM),
     len(L, LEN),
     X is_frac SUM div LEN.
-    
-X is_frac Y:- 
+
+X is_frac Y:-
     integer(Y),  %! cut predicate
     !,
     X=Y/1.
 
-X is_frac -Y:- 
+X is_frac -Y:-
     NEG is_frac Y,
     NEG=NUM/DEN,
     integer(NUM),
@@ -57,7 +57,7 @@ X is_frac -Y:-
     N_NUM is -NUM,
     X is_frac N_NUM/DEN.
 
-X is_frac Y:- 
+X is_frac Y:-
     Y=NUM/DEN,
     integer(NUM),
     integer(DEN),
@@ -71,7 +71,7 @@ X is_frac Y:-
     !,
     X=NUM_F/DEN_F.
 
-_ is_frac Y:- 
+_ is_frac Y:-
     Y=_/DEN,
     integer(DEN),
     DEN=0,
@@ -95,8 +95,8 @@ X is_frac A-B:-
     NUM is (NUM_1* DEN_2) - (NUM_2 * DEN_1),
     DEN is DEN_1 * DEN_2,
     X is_frac NUM/DEN.
-    
-X is_frac A * B:- 
+
+X is_frac A * B:-
     FAC_1 is_frac A,
     FAC_2 is_frac B,
     FAC_1=NUM_1/DEN_1,
@@ -105,7 +105,7 @@ X is_frac A * B:-
     DEN is DEN_1 * DEN_2,
     X is_frac NUM/DEN.
 
-X is_frac A div B:- 
+X is_frac A div B:-
     FAC_1 is_frac A,
     FAC_2 is_frac B,
     FAC_1=NUM_1/DEN_1,

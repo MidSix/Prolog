@@ -41,8 +41,8 @@ X is_frac A-B:-
     DEN is DEN_1 * DEN_2,
     X is_frac NUM/DEN.
 
-%multiplication    
-X is_frac A * B:- 
+%multiplication
+X is_frac A * B:-
     FAC_1 is_frac A,
     FAC_2 is_frac B,
     FAC_1=NUM_1/DEN_1,
@@ -52,7 +52,7 @@ X is_frac A * B:-
     X is_frac NUM/DEN.
 
 %divition
-X is_frac A div B:- 
+X is_frac A div B:-
     FAC_1 is_frac A,
     FAC_2 is_frac B,
     FAC_1=NUM_1/DEN_1,
